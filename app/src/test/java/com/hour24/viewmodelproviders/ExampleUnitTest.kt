@@ -1,4 +1,4 @@
-package com.hour24.myapplication
+package com.hour24.viewmodelproviders
 
 import org.junit.Test
 

@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.hour24.myapplication"
+        applicationId "com.hour24.viewmodelproviders"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

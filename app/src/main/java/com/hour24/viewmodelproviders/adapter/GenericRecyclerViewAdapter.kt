@@ -1,4 +1,5 @@
-package com.hour24.myapplication.adapter
+package com.hour24.viewmodelproviders.adapter
+
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,21 +13,21 @@ import java.util.*
 abstract class GenericRecyclerViewAdapter<T : Any, in D : ViewDataBinding>(
     private val mContext: Context,
     private val mLayoutId: Int,
-    private var mList: ArrayList<T>
+    private var mList: ArrayList<T> = ArrayList()
 ) : RecyclerView.Adapter<GenericRecyclerViewAdapter.ViewHolder>() {
-
-    private val mRandom = Random()
-
 
     abstract fun onBindData(position: Int, model: T, dataBinding: D)
 
     init {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val dataBinding =
-            DataBindingUtil.inflate<ViewDataBinding>(LayoutInflater.from(parent.context), mLayoutId, parent, false)
+        val dataBinding = DataBindingUtil.inflate<ViewDataBinding>(
+            LayoutInflater.from(parent.context),
+            mLayoutId,
+            parent,
+            false
+        )
         return ViewHolder(dataBinding)
     }
 
@@ -41,7 +42,7 @@ abstract class GenericRecyclerViewAdapter<T : Any, in D : ViewDataBinding>(
     }
 
     override fun getItemCount(): Int {
-        return if (mList.isNullOrEmpty()) mList.size else 0
+        return if (!mList.isNullOrEmpty()) mList.size else 0
     }
 
     /**
@@ -64,21 +65,4 @@ abstract class GenericRecyclerViewAdapter<T : Any, in D : ViewDataBinding>(
     class ViewHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         var mDataBinding: ViewDataBinding = binding
     }
-
-//    mRecentAdapter = object : GenericRecyclerViewAdapter<Recent, MainRecentItemBinding>(this@MainActivity, R.layout.main_recent_item, mRecentList) {
-//
-//        override fun onBindData(position: Int, model: Recent?, dataBinding: MainRecentItemBinding?) {
-//
-//            try {
-//
-//                val viewModel = ViewModel()
-//                viewModel.mModel = model
-//                dataBinding!!.viewModel = viewModel
-//
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//
-//        }
-//    }
 }
