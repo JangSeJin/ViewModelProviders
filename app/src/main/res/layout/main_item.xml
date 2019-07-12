@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="model"
-            type="com.hour24.viewmodelproviders.model.LanguageModel" />
-
-        <variable
             name="viewModel"
             type="com.hour24.viewmodelproviders.viewmodel.MainViewModel" />
 
